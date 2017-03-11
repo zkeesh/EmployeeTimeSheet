@@ -12,6 +12,10 @@ $(document).ready(function(){
   firebase.initializeApp(config);
 
  //Variables
+ var name;
+ var role;
+ var startDate;
+ var monthlyRate;
 
  var reference = firebase.database();
 
@@ -22,10 +26,10 @@ $(document).on("click", ".submit-button", function(event){
 
 //Initial Variables
 
- var name = $("#name").val().trim();
- var role = $("#role").val().trim();
- var startDate = $("#startDate").val().trim();
- var monthlyRate = $("#monthlyRate").val().trim();
+ name = $("#name").val().trim();
+ role = $("#role").val().trim();
+ startDate = $("#startDate").val().trim();
+ monthlyRate = $("#monthlyRate").val().trim();
 
 	
  //Pushing employee data to the database
@@ -44,7 +48,15 @@ reference.ref().on("child_added", function(childSnapshot){
 	var dataKeys = Object.keys(data);
 	var lastItem = dataKeys.length - 1;
 	console.log(lastItem);
+
+	//Displaying properties of last submission in the table
 	
+	
+	//Calculating Months Worked
+	
+	var startDateFormat = moment(new Date(startDate));
+	var monthsWorked = (moment().diff(startDateFormat, "months"));
+
 
 	// console.log(lastItem);
 }, function(dataError){
