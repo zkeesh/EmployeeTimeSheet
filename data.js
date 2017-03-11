@@ -39,9 +39,17 @@ $(document).on("click", ".submit-button", function(event){
 
 });
 
-// reference.on("child_added", function(childRow){
+reference.ref().on("child_added", function(childSnapshot){
+	var data = childSnapshot.val();
+	var dataKeys = Object.keys(data);
+	var lastItem = dataKeys.length - 1;
+	console.log(lastItem);
+	
 
-// });
+	// console.log(lastItem);
+}, function(dataError){
+	alert("Errors handled:" + dataError);
+});
 
 
 
