@@ -15,18 +15,18 @@ $(document).ready(function(){
 
  var reference = firebase.database();
 
- //Initial Variables
+//Event listeners
+	
+$(document).on("click", ".submit-button", function(event){
+	event.preventDefault();
+
+//Initial Variables
 
  var name = $("#name").val().trim();
  var role = $("#role").val().trim();
  var startDate = $("#startDate").val().trim();
  var monthlyRate = $("#monthlyRate").val().trim();
 
-
-//Event listeners
-	
-$(document).on("click", ".submit-button", function(event){
-	event.preventDefault();
 	
  //Pushing employee data to the database
 	reference.ref().push({
@@ -39,6 +39,9 @@ $(document).on("click", ".submit-button", function(event){
 
 });
 
+// reference.on("child_added", function(childRow){
+
+// });
 
 
 
